@@ -22,43 +22,43 @@
 </div>
 </header>
 
-<div class="notifica" ></div>
-<i class="fas fa-bell"></i>
+<div class="notifica" aria-label="Notificações">
+    <button class="btn-notifica" aria-label="Abrir notificações">
+        <i class="fas fa-bell" aria-hidden="true"></i>
+        <span class="sr-only">Notificações</span>
+    </button>
+</div>
 
-<div class="menu"> 
-    <ul> 
+<div class="menu">
+    <ul>
         <li><a href="#"><i class="fas fa-user"></i> Perfil</a></li>
         <li><a href="#"><i class="fas fa-calendar"></i> Eventos</a></li>
         <li><a href="#"><i class="fas fa-users"></i> Membros</a></li>
-        <li><a href="#"><i class ="fas fa-cog"></i>Configurações</a></li>
+        <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li>
+        <li><a href="#"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
     </ul>
-
-</div>
-<div class="sair">
-    <nav>
-        <ul> <li> <a href="#"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
-        </ul>
-    </nav> 
 </div>
 
+<main>
+    <section class="recipiente-calendar" aria-label="Calendário">
+        <div class="calendar">
+            <h2 id="mes-ano"></h2>
+            <button id="mes-anterior" aria-label="Mês anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+            <button id="mes-seguinte" aria-label="Próximo mês"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+        </div>
 
-<div class="recipiente-calendar">
-<div class="calendar">
-    <h2 id="Mes-do-ano"></h2>
-    <button id="mes-anterior"><i class="fas fa-chevron-left"></i></button>
-    <button id="mes-seguinte"><i class="fas fa-chevron-right"></i></button>
-</div>
-</div>
-<div class="dias-a-seguir">
-    <div class="nome-dia">Dom</div>
-    <div class="nome-dia">Seg</div>
-    <div class="nome-dia">Ter</div>
-    <div class="nome-dia">Qua</div>
-    <div class="nome-dia">Qui</div>
-    <div class="nome-dia">Sex</div>
-    <div class="nome-dia">Sáb</div>
-</div>
-<div id="dias-Calendario" class="dias-a-seguir"> </div>
+        <div class="dias-a-seguir" aria-hidden="true">
+            <div class="nome-dia">Dom</div>
+            <div class="nome-dia">Seg</div>
+            <div class="nome-dia">Ter</div>
+            <div class="nome-dia">Qua</div>
+            <div class="nome-dia">Qui</div>
+            <div class="nome-dia">Sex</div>
+            <div class="nome-dia">Sáb</div>
+        </div>
+
+        <div id="dias-calendario" class="dias-a-seguir" aria-label="Dias do mês"></div>
+    </section>
 
 <div class="Dashboard">
 <div class="card"><i class="fas fa-user-friends"></i></div>
@@ -83,6 +83,8 @@
     </tbody>
 </table>
 
+
+</main>
 
     <script src="script.js"></script>
 </body>

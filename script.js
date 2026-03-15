@@ -1,41 +1,99 @@
-// Dados simulados para a tabela
-const membros = [
-    { nome: "Ricardo Santos", id: "#1024", status: "Ativo",pontuação:300 },
-    { nome: "Ana Oliveira", id: "#1025", status: "Ativo",pontuação:250 },
-    { nome: "Carlos Lima", id: "#1026", status: "Ativo",pontuação:200 },
-    { nome: "Juliana Costa", id: "#1027",status: "Ativo",pontuação:150 }
-];
+const calendar = (() => {
+  const locale = 'pt-BR';
+  const monthLabel = document.getElementById('mes-ano');
+  const daysContainer = document.getElementById('dias-calendario');
+  const prevButton = document.getElementById('mes-anterior');
+  const nextButton = document.getElementById('mes-seguinte');
 
-// Função para carregar membros na tabela
-function renderTable() {
-    const tableBody = document.getElementById('members-table');
-    
-    tableBody.innerHTML = membros.map(m => `
-        <tr>
-            <td><strong>${m.nome}</strong></td>
-            <td>${m.id}</td>
-            <td>${m.plano}</td>
-            <td><span class="status-badge active-status">${m.status}</span></td>
-            <td><button style="border:none; background:none; cursor:pointer;"><i class="fas fa-ellipsis-v"></i></button></td>
-        </tr>
-    `).join('');
-}
+  const today = new Date();
+  let currentDate = new Date(today.getFullYear(), today.getMonth(), 1);
 
-// Saudação dinâmica baseada na hora
-function setGreeting() {
-    const hour = new Date().getHours();
-    const msgElement = document.getElementById('welcome-msg');
-    let greeting = "";
+  const formatMonthYear = (date) => {
+    return new Intl.DateTimeFormat(locale, { month: 'long', year: 'numeric' }).format(date);
+  };
 
-    if (hour < 12) greeting = "Bom dia, Davi";
-    else if (hour < 18) greeting = "Boa tarde, Davi";
-    else greeting = "Boa noite, Davi";
+  const clearDays = () => {
+    daysContainer.innerHTML = '';
+  };
 
-    msgElement.innerText = greeting;
-}
+  const buildDayItem = (day, opts = {}) => {
+    const item = document.createElement('div');
+    item.className = 'dia';
+    item.textContent = String(day);
 
-// Inicialização
-window.onload = () => {
-    renderTable();
-    setGreeting();
-};
+    if (opts.isToday) {
+      item.classList.add('today');
+      item.setAttribute('aria-current', 'date');
+    }
+
+    if (opts.outsideMonth) {
+      item.classList.add('outside-month');
+      item.setAttribute('aria-hidden', 'true');
+    }
+
+    return item;
+  };
+
+  const renderCalendar = (date) => {
+    const year = date.getFullYear();
+    const month = date.getMonth();
+
+    monthLabel.textContent = formatMonthYear(date);
+
+    const firstOfMonth = new Date(year, month, 1);
+    const lastOfMonth = new Date(year, month + 1, 0);
+    const daysInMonth = lastOfMonth.getDate();
+
+    const startWeekDay = firstOfMonth.getDay();
+    const prevMonthLastDay = new Date(year, month, 0).getDate();
+
+    clearDays();
+
+    // Fill leading days from previous month
+    for (let i = startWeekDay - 1; i >= 0; i -= 1) {
+      const dayNumber = prevMonthLastDay - i;
+      const item = buildDayItem(dayNumber, { outsideMonth: true });
+      daysContainer.appendChild(item);
+    }
+
+    // Fill current month days
+    for (let day = 1; day <= daysInMonth; day += 1) {
+      const isToday =
+        day === today.getDate() &&
+        month === today.getMonth() &&
+        year === today.getFullYear();
+
+      const item = buildDayItem(day, { isToday });
+      daysContainer.appendChild(item);
+    }
+
+    // Fill trailing days of next month to complete the last week (optional)
+    const totalCells = daysContainer.children.length;
+    const remainder = totalCells % 7;
+    if (remainder !== 0) {
+      const needed = 7 - remainder;
+      for (let i = 1; i <= needed; i += 1) {
+        const item = buildDayItem(i, { outsideMonth: true });
+        daysContainer.appendChild(item);
+      }
+    }
+  };
+
+  const navigate = (offset) => {
+    currentDate.setMonth(currentDate.getMonth() + offset);
+    renderCalendar(currentDate);
+  };
+
+  const init = () => {
+    if (!monthLabel || !daysContainer || !prevButton || !nextButton) return;
+
+    prevButton.addEventListener('click', () => navigate(-1));
+    nextButton.addEventListener('click', () => navigate(1));
+
+    renderCalendar(currentDate);
+  };
+
+  return { init };
+})();
+
+calendar.init();
