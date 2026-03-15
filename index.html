@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGN</title>
+     <!-- link css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- icones-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+</head>
+<body>
+    <div class="info">
+<span id="mgs-boasvindas">olá, Administrador</span>
+<img src="img/user.jpg" alt="Foto do usuário" class="foto-usuario">
+</div> 
+
+<header>   
+<div class="pesquisa">
+    <i class="fas fa-search"></i>
+    <input type="text" placeholder="Busque eventos ou membros...">
+</div>
+</header>
+
+<div class="notifica" ></div>
+<i class="fas fa-bell"></i>
+
+<div class="menu"> 
+    <ul> 
+        <li><a href="#"><i class="fas fa-user"></i> Perfil</a></li>
+        <li><a href="#"><i class="fas fa-calendar"></i> Eventos</a></li>
+        <li><a href="#"><i class="fas fa-users"></i> Membros</a></li>
+        <li><a href="#"><i class ="fas fa-cog"></i>Configurações</a></li>
+    </ul>
+
+</div>
+<div class="sair">
+    <nav>
+        <ul> <li> <a href="#"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+        </ul>
+    </nav> 
+</div>
+
+
+<div class="recipiente-calendar">
+<div class="calendar">
+    <h2 id="Mes-do-ano"></h2>
+    <button id="mes-anterior"><i class="fas fa-chevron-left"></i></button>
+    <button id="mes-seguinte"><i class="fas fa-chevron-right"></i></button>
+</div>
+</div>
+<div class="dias-a-seguir">
+    <div class="nome-dia">Dom</div>
+    <div class="nome-dia">Seg</div>
+    <div class="nome-dia">Ter</div>
+    <div class="nome-dia">Qua</div>
+    <div class="nome-dia">Qui</div>
+    <div class="nome-dia">Sex</div>
+    <div class="nome-dia">Sáb</div>
+</div>
+<div id="dias-Calendario" class="dias-a-seguir"> </div>
+
+<div class="Dashboard">
+<div class="card"><i class="fas fa-user-friends"></i></div>
+<h3>30</h3>
+<p>Membros </p>
+</div>
+
+<div class="destaque">
+<h2>Membros em Destaque</h2>
+<button class="btn-ver-mais">Ver Mais</button>
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>idade</th>
+            <th>desbravdor</th>
+            <th>pontuação</th>
+        </tr>
+    </thead>
+    <tbody id="tabela-destaque">
+    </tbody>
+</table>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

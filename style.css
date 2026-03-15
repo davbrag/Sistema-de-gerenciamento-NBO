@@ -1,0 +1,55 @@
+:root {
+    --primary-color: #ff0000; /* Vermelho */
+    --secondary-color: #0000ff; /* Azul */
+    --bg-color: linear-gradient(135deg, #ffcccc, #ccccff); /* Gradiente vermelho-azul claro */
+    --background-color: #152f59;
+    --text-main: #334155;
+    --text-light: #94a3b8;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+}
+.container {
+    display: flex;
+    height: 100vh;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+nav ul li {
+    margin: 20px 0;
+}
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+nav ul li a i {
+    margin-right: 10px;
+}
+
+.foto-usuario {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+    background-color: var(--sidebar-color);
+}
