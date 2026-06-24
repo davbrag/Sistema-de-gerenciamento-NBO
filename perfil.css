@@ -1,0 +1,67 @@
+body{
+    background-color: #7e5fdc;
+    background: linear-gradient(90deg, #7e5fdc 0%, #e8d3ef 100%);
+    gap: 20px;
+    display: flex;
+    
+}
+
+    .perfil {
+        position: relative;
+        bottom: 0px;
+        left: 100px;
+        right: 100px;
+        width: 400px;
+        height: 400px;
+       
+    }
+
+.h1{
+    font-size: 50px;
+    text-align: center;
+    position: relative;
+    left: 100px;
+    right: 100px;
+}
+.foto{
+    position: relative;
+    left: 100px;
+    right: 100px;
+    top: 0px;
+    bottom: 300px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img {
+    position: relative;
+    left: 10px;
+    right: 200px;
+    top: 2px;
+    bottom: 300px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.dados-do-usuario {
+    position: relative;
+    bottom: -400px;
+    left: -350px;
+    right: 100px;
+    width: 700px;
+    height: 200px;
+    border-radius: 10px;
+    padding: 20px;
+
+ }
+
+ h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+ }
